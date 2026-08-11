@@ -1,0 +1,307 @@
+:root {
+  color-scheme: light;
+  --background: #f8faf5;
+  --surface: #ffffff;
+  --surface-soft: #f0f4e9;
+  --ink: #182014;
+  --muted: #596353;
+  --primary: #3f6426;
+  --primary-dark: #2f4a1d;
+  --border: #d8e0d0;
+  --focus: #0b67c2;
+  --shadow: 0 0.5rem 1.6rem rgb(30 51 19 / 8%);
+  --radius: 1rem;
+  --content-width: 70rem;
+  --reading-width: 47rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  min-width: 20rem;
+  margin: 0;
+  color: var(--ink);
+  background: var(--background);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+a {
+  color: var(--primary-dark);
+  font-weight: 650;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+a:focus-visible {
+  outline: 0.2rem solid var(--focus);
+  outline-offset: 0.22rem;
+  border-radius: 0.2rem;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--ink);
+  font-weight: 750;
+  letter-spacing: -0.025em;
+  line-height: 1.18;
+}
+
+h1 {
+  max-width: 14ch;
+  margin-bottom: 0.8rem;
+  font-size: clamp(2.35rem, 7vw, 4.4rem);
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.55rem, 4vw, 2.25rem);
+}
+
+h3 {
+  margin-bottom: 0.55rem;
+  font-size: 1.12rem;
+}
+
+.site-shell {
+  width: min(calc(100% - 2.5rem), var(--content-width));
+  margin-inline: auto;
+}
+
+.narrow-content {
+  width: min(calc(100% - 2.5rem), var(--reading-width));
+}
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: rgb(248 250 245 / 96%);
+}
+
+.header-content,
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.header-content {
+  min-height: 4.5rem;
+}
+
+.brand {
+  color: var(--ink);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
+.nav-list,
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav-list a,
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.nav-list a[aria-current="page"] {
+  color: var(--primary-dark);
+}
+
+.hero {
+  padding: clamp(4.2rem, 11vw, 8rem) 0 clamp(3.5rem, 8vw, 6rem);
+}
+
+.hero-content {
+  max-width: 49rem;
+}
+
+.eyebrow {
+  margin-bottom: 0.65rem;
+  color: var(--primary-dark);
+  font-size: 0.92rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 36rem;
+  margin-bottom: 1.1rem;
+  font-size: clamp(1.28rem, 3vw, 1.65rem);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.intro {
+  max-width: 44rem;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1.06rem;
+}
+
+.section {
+  padding: clamp(3.5rem, 8vw, 5.5rem) 0;
+}
+
+.section-soft {
+  background: var(--surface-soft);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+.info-card,
+.contact-card,
+.callout {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.info-card {
+  padding: 1.5rem;
+}
+
+.info-card p,
+.callout p,
+.contact-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.callout,
+.contact-card {
+  padding: clamp(1.5rem, 5vw, 2.35rem);
+}
+
+.callout .button-link {
+  margin-top: 1.4rem;
+}
+
+.button-link {
+  display: inline-block;
+  padding: 0.72rem 1.05rem;
+  border-radius: 0.7rem;
+  color: #fff;
+  background: var(--primary);
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.button-link:hover {
+  color: #fff;
+  background: var(--primary-dark);
+}
+
+.email-link {
+  display: inline-block;
+  overflow-wrap: anywhere;
+  font-size: clamp(1.18rem, 4vw, 1.5rem);
+}
+
+.policy {
+  max-width: var(--reading-width);
+}
+
+.policy h1 {
+  max-width: none;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+}
+
+.policy-meta {
+  margin-bottom: 2.6rem;
+  color: var(--muted);
+}
+
+.policy section {
+  margin-top: 2.6rem;
+}
+
+.policy h2 {
+  font-size: clamp(1.38rem, 4vw, 1.8rem);
+}
+
+.policy h3 {
+  margin-top: 1.65rem;
+  font-size: 1.05rem;
+}
+
+.policy p,
+.policy li {
+  overflow-wrap: anywhere;
+}
+
+.policy ul {
+  padding-left: 1.25rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.footer-content {
+  min-height: 5rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.footer-content p {
+  margin: 0;
+}
+
+@media (max-width: 40rem) {
+  .site-shell,
+  .narrow-content {
+    width: min(calc(100% - 2rem), var(--content-width));
+  }
+
+  .header-content,
+  .footer-content {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 0;
+  }
+
+  .nav-list {
+    gap: 0.4rem 0.8rem;
+  }
+
+  .footer-content {
+    gap: 0.55rem;
+  }
+}
