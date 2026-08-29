@@ -25,7 +25,7 @@
     <article class="site-shell policy">
       <p class="eyebrow">GridHU</p>
       <h1>GridHU – Adatvédelmi tájékoztató</h1>
-      <p class="policy-meta">Hatálybalépés: 2026. augusztus 11.<br>Utolsó módosítás: 2026. augusztus 11.</p>
+      <p class="policy-meta">Hatálybalépés: 2026. augusztus 11.<br>Utolsó módosítás: 2026. augusztus 29.</p>
 
       <section>
         <h2>1. Az adatkezelő</h2>
@@ -44,7 +44,9 @@
         <h3>Hálózati és technikai adatok</h3>
         <p>A GridHU internetkapcsolaton keresztül kommunikál a saját backendjével. A kapcsolat létrehozása és a szolgáltatás működtetése során a szerver és az infrastruktúra-szolgáltatók technikai adatokat kezelhetnek, például IP-címet, a kérés időpontját, a meghívott szolgáltatást vagy végpontot, a válasz technikai állapotát, valamint hibák esetén diagnosztikai adatokat.</p>
         <p>Ezeket az adatokat kizárólag a szolgáltatás működtetése, hibakeresése, biztonságának fenntartása és a visszaélések elleni védelem érdekében kezeljük. A GridHU ezekből nem készít felhasználói profilt, és nem használja őket reklámozásra vagy felhasználói viselkedés elemzésére.</p>
-        <p>A normál alkalmazás- és szolgáltatásnaplókat a Google Cloud jelenlegi production beállítása 30 napig őrzi. A Google Cloud bizonyos kötelező adminisztrációs és rendszer-auditnaplókat külön rendszerben 400 napig őriz.</p>
+        <p>A GridHU backendjének saját kérésnaplója a HTTP-metódust, a hívott végpont útvonalát, a válasz státuszkódját és a kiszolgálás időtartamát tartalmazza; IP-címet ez a napló nem rögzít. IP-cím a futtatókörnyezet (Google Cloud Run) saját platformnaplóiban jelenhet meg.</p>
+        <p>A visszaélések elleni védelem érdekében a backend kérésszámlálást (rate limiting) alkalmaz, amelyhez megkülönböztető kulcsként a kérés IP-címét használja. Ezt a számlálót a rendszer kizárólag a memóriában, rövid, percléptékű időablakra tartja fenn; IP-címet ebből a célból adatbázisban nem tárolunk.</p>
+        <p>A technikai naplók megőrzési idejét a futtatókörnyezet naplózási beállításai határozzák meg; a GridHU ezektől eltérő, saját megőrzési időt nem állít be. A Google Cloud Logging alapértelmezése szerint a normál alkalmazás- és szolgáltatásnaplók 30 napig, egyes kötelező adminisztrációs és rendszer-auditnaplók külön rendszerben 400 napig maradnak meg.</p>
         <p>A működtetéshez és biztonsághoz szükséges technikai adatkezelés jogalapja az adatkezelő jogos érdeke.</p>
 
         <h3>Kapcsolatfelvétel e-mailben</h3>
@@ -61,8 +63,8 @@
 
       <section>
         <h2>4. Milyen felhasználói adatokat nem gyűjt a GridHU?</h2>
-        <p>A GridHU v0.1 nem használ felhasználói fiókot, saját felhasználói analitikát, hirdetési vagy marketing SDK-t, reklámazonosítót, helyadatot, helyalapú követést, push értesítést, közösségimédia-követőkódot, felhasználói tartalomfeltöltést vagy külön harmadik félhez tartozó crash-reporting SDK-t.</p>
-        <p>Az alkalmazás nem kér hozzáférést a névjegyekhez, fényképekhez, kamerához, mikrofonhoz, hívásokhoz vagy üzenetekhez.</p>
+        <p>A GridHU alkalmazás nem használ felhasználói fiókot, saját felhasználói analitikát, hirdetési vagy marketing SDK-t, reklámazonosítót, helyadatot, helyalapú követést, push értesítést, közösségimédia-követőkódot, felhasználói tartalomfeltöltést vagy külön harmadik félhez tartozó crash-reporting SDK-t.</p>
+        <p>Az alkalmazás nem kér hozzáférést a névjegyekhez, fényképekhez, kamerához, mikrofonhoz, hívásokhoz vagy üzenetekhez. Az Android-alkalmazás egyetlen kért engedélye az internet-hozzáférés.</p>
       </section>
 
       <section>
