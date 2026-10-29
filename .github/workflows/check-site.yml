@@ -1,0 +1,18 @@
+name: Check static site
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Validate source
+        run: python3 .github/scripts/check_site.py
+      - name: Stage public allowlist
+        run: python3 .github/scripts/prepare_site.py
+      - name: Validate staged artifact
+        run: python3 .github/scripts/check_site.py _site
