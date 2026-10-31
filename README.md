@@ -11,23 +11,24 @@ A GridHU statikus webes otthona: Android-alkalmazásbemutató, három adatértel
 
 ## Helyi megnyitás
 
-A projektútvonalhoz kötött erőforrások miatt HTTP-previewt használj. A repository gyökerében, Python 3.9+ verzióval:
+A gyökérhez kötött erőforrások miatt HTTP-previewt használj. A repository gyökerében, Python 3.9+ verzióval:
 
 ```text
 python .github/scripts/serve_site.py
 ```
 
-Ezután nyisd meg a `http://127.0.0.1:8000/GridHU-Web/` címet. Csak a loopback interfészen, a publikus fájllistát szolgálja ki; nincs API-hívás vagy adatgyűjtés. Leállítás: Ctrl+C.
+Ezután nyisd meg a `http://127.0.0.1:8000/` címet. A preview a saját domain `/` gyökerét modellezi. Csak a loopback interfészen, a publikus fájllistát szolgálja ki GET és HEAD kérésre is; nincs API-hívás vagy adatgyűjtés. Leállítás: Ctrl+C.
 
 ## Oldalak
 
-- Kezdőlap: <https://kosikbkosik-ux.github.io/GridHU-Web/>
-- Adatvédelem: <https://kosikbkosik-ux.github.io/GridHU-Web/privacy/>
-- Kapcsolat: <https://kosikbkosik-ux.github.io/GridHU-Web/contact/>
-- Áramtermelés és mix: <https://kosikbkosik-ux.github.io/GridHU-Web/aramtermeles/>
-- Paks adatainak értelmezése: <https://kosikbkosik-ux.github.io/GridHU-Web/paks/>
-- Import–export: <https://kosikbkosik-ux.github.io/GridHU-Web/import-export/>
-- Sitemap: <https://kosikbkosik-ux.github.io/GridHU-Web/sitemap.xml>
+- Kezdőlap: <https://gridhu.hu/>
+- Adatvédelem: <https://gridhu.hu/privacy/>
+- Kapcsolat: <https://gridhu.hu/contact/>
+- Áramtermelés és mix: <https://gridhu.hu/aramtermeles/>
+- Paks adatainak értelmezése: <https://gridhu.hu/paks/>
+- Import–export: <https://gridhu.hu/import-export/>
+- Sitemap: <https://gridhu.hu/sitemap.xml>
+- Robots: <https://gridhu.hu/robots.txt>
 
 Az adatvédelmi tájékoztató a [privacy/index.html](privacy/index.html) fájlban módosítható.
 
@@ -35,7 +36,11 @@ Az adatvédelmi tájékoztató a [privacy/index.html](privacy/index.html) fájlb
 
 A [deploy-pages.yml](.github/workflows/deploy-pages.yml) workflow `main` pushra vagy kézi indításra publikál. A PR ellenőrző workflow nem deployol. A deployment előtt a Python-ellenőrző lefut, majd az explicit publikus fájllistából friss `_site` staging mappa készül. Kizárólag ez kerül a Pages artifactba; README, tesztek és belső jegyzetek nem. Nincs új szolgáltatás vagy frontend buildfüggőség.
 
-A canonical és sitemap címek a jelenlegi HTTPS projektcímre mutatnak; az `index.html` változat canonicalja a perjeles oldal. A navigáció és erőforrások a `/GridHU-Web/` projektútvonalat használják. Domainváltáskor mindkettőt tudatosan át kell vezetni. Nincs projekt alatti `robots.txt`: az a host gyökerének szabályait nem helyettesítené. Sitemap-beküldés és Search Console-igazolás külön hozzáféréssel és élesítés után végezhető.
+A canonical, Open Graph, Twitter-kép, JSON-LD és sitemap címek a `https://gridhu.hu/` célcímre mutatnak; az `index.html` változat canonicalja a perjeles oldal. A belső navigáció és az erőforrások a saját domain `/` gyökerét használják. A `robots.txt` így a host gyökerében szolgálható ki; engedi a feltérképezést és megadja az új sitemap címét. A 404-oldal `noindex` jelölése megmarad, és nem szerepel a sitemapben.
+
+Az explicit publikus allowlist **15 fájlt** tartalmaz a robots fájllal együtt. A régi projektútvonalhoz nem készül második, duplikált oldalfa. A régi GitHub Pages URL-ek átirányítását, a saját domain beállítását, a DNS-t és a HTTPS-t az éles kiadáskor külön kell igazolni: ezeket a kódbeli átvezetés és a helyi teszt nem bizonyítja.
+
+A saját domain a GitHub Pages repository-beállításában adható meg. [Egyéni GitHub Actions publikálásnál nincs szükség `CNAME` fájlra](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site); meglévő ilyen fájlt a GitHub figyelmen kívül hagy. A workflow és a staging ezért nem hoz létre `CNAME` fájlt. Sitemap-beküldés és Search Console-igazolás megfelelő hozzáféréssel, az éles új URL-ek ellenőrzése után végezhető. A [Google robots útmutatója](https://developers.google.com/search/docs/crawling-indexing/robots/create-robots-txt) szerint a robots fájl a host gyökerébe tartozik. Dokumentációellenőrzés: 2026-10-31.
 
 ## Ellenőrzés
 
@@ -45,7 +50,7 @@ python .github/scripts/prepare_site.py
 python .github/scripts/check_site.py _site
 ```
 
-A staging üres, új célmappát igényel. A teszt ellenőrzi a belső URL-eket és fragmentumokat, a projektútvonalat, a címek egyediségét, canonicalt, sitemapet, JSON-LD-t és a véletlen indexelési tiltást. Külső oldalak elérhetőségét, Google-indexelést, Lighthouse-eredményt vagy fizikai Android-működést nem bizonyít.
+A staging üres, új célmappát igényel. A teszt ellenőrzi a belső URL-eket és fragmentumokat, a saját domain gyökerét, a régi projektcím hiányát, a címek egyediségét, canonicalt, megosztási metaadatokat, sitemapet, JSON-LD-t, robots szabályokat és a véletlen indexelési tiltást. Külső oldalak elérhetőségét, éles domainbeállítást, Google-indexelést, Lighthouse-eredményt vagy fizikai Android-működést nem bizonyít.
 
 ## Alkalmazásképek és bolti hivatkozás
 

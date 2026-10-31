@@ -4,7 +4,7 @@ import shutil
 
 ROOT = Path(__file__).resolve().parents[2]
 PUBLIC = (
-    'index.html', '404.html', 'sitemap.xml',
+    'index.html', '404.html', 'sitemap.xml', 'robots.txt',
     'privacy/index.html', 'contact/index.html',
     'aramtermeles/index.html', 'paks/index.html', 'import-export/index.html',
     'assets/styles.css', 'assets/favicon.svg', 'assets/social-card.png',
